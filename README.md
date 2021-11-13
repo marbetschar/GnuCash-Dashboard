@@ -41,6 +41,38 @@ GnuCash Dashboard can be configured by changing the `config.py` file according t
 Each variable from the `config.py` file can also be set as Environment Variable using a `GNUCASH2DASH_` prefix. See the `config.py` for
 further documentation about the available configuration values as well as their corresponding Environment Variable.
 
+## Metrics
+
+### Net Worth Absolute
+
+```
+net_worth := assets + liabilities
+```
+
+### Net Worth Trend
+
+```
+net_worth_trend := linear_regression (assets_last_6_months + liabilities_last_6_months)
+```
+
+### Net Worth Prediction
+
+```
+net_worth_prediction := extrapolate(net_worth_trend, until=net_worth_goal)
+```
+
+### Income vs. Expenses
+
+This should be pretty self explanatory :)
+
+### Runway
+
+```
+runway := assets / average_daily_expense_last_180_days
+```
+
+Answers the question "If my income stopped right now, how long would I be able to survive?"
+
 ## Testing
 
 GnuCash Dashboard comes with Unit Testing. To execute the tests, simply navigate to the project root directory and execute the `tests.sh`:

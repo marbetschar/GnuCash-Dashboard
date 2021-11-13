@@ -5,7 +5,7 @@ from dash import dcc
 import plotly.io as pio
 
 from dash.dependencies import Input, Output
-from gnucash2dash import gnucash, widgets, debt
+from gnucash2dash import gnucash, widgets
 
 def app(name, gnucash_file):
     # Set default template for plotly:
