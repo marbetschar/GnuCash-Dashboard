@@ -1,0 +1,5 @@
+# GnuCash
+*.log
+*.LCK
+*.LNK
+*.gnucash.*.gnucash

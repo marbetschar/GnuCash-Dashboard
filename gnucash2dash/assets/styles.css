@@ -1,0 +1,68 @@
+body {
+    background-color: black;
+    font-family: "Open Sans", verdana, arial, sans-serif;
+}
+
+.tab-parent .tab-container .tab,
+.tab-parent .tab-container .tab:hover {
+    border-left-color: transparent !important;
+    border-right-color: transparent !important;
+    border-bottom-color: transparent !important;
+    background-color: transparent !important;
+    color: white;
+}
+
+.tab-parent .tab-container .tab:not(.tab--selected){
+    border-top-color: transparent !important;
+}
+
+.widget {
+    margin: 25px;
+    color: white;
+    background-color: #111111;
+    flex: 1;
+    overflow: scroll;
+}
+
+.widget.kpi {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.widget.kpi .label {
+    position: absolute;
+    left: 30px;
+    top: 10px;
+}
+
+.widget.kpi h1 {
+    font-size: 5em;
+    margin: 0.1em;
+}
+
+.widget.kpi.gauge > div {
+    position: relative;
+    top: 1em;
+}
+
+.widget.kpi.gauge span {
+    position: relative;
+    bottom: 1.5em;
+}
+
+.widget .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th {
+    font-weight: bold;
+}
+
+.widget .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner th,
+.widget .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner td {
+    background-color: transparent;
+    border-color: #283442 !important;
+}
+
+.widget .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner table {
+    --hover: transparent;
+}
