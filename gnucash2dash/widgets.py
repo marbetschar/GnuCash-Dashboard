@@ -22,8 +22,8 @@ def net_worth(book):
         html.H1(locale.format_string(currency + ' %.0f', net_worth, True))
         ])
 
-def net_worth_trend(book):
-    df = metrics.net_worth_trend(book, n_months=6)
+def net_worth_trend(book, n_months):
+    df = metrics.net_worth_trend(book, n_months=n_months)
     fig = px.line(df, x='date', y='net_worth_diff', labels={
         'date': '',
         'net_worth_diff': ''
@@ -32,8 +32,8 @@ def net_worth_trend(book):
 
     return dcc.Graph(className='widget', figure=fig)
 
-def net_worth_prediction(book, net_worth=100000):
-    date = metrics.predict_date_for_net_worth(book, net_worth=net_worth)
+def net_worth_prediction(book, goal):
+    date = metrics.predict_date_for_net_worth(book, net_worth=goal)
 
     date_formatted = '∞'
     if not date is numpy.inf:
@@ -46,11 +46,11 @@ def net_worth_prediction(book, net_worth=100000):
     return html.Div(className='widget kpi', children=[
         html.Caption(className='label', children=['net worth prediction'], style={ 'whiteSpace': 'nowrap' }),
         html.H1(date_formatted),
-        html.Span(locale.format_string(currency + ' %.0f', net_worth, True))
+        html.Span(locale.format_string(currency + ' %.0f', goal, True))
         ])
 
-def income_vs_expense(book):
-    df = metrics.income_vs_expense(book)
+def income_vs_expense(book, n_months):
+    df = metrics.income_vs_expense(book, n_months=n_months)
     fig = px.bar(df, x='date', y=['income', 'expenses'], barmode='overlay', opacity=1, labels={
         'date': '',
         'value': '',
@@ -60,8 +60,8 @@ def income_vs_expense(book):
 
     return dcc.Graph(className='widget', figure=fig)
 
-def runway(book):
-    runway_in_days = numpy.floor(metrics.runway(book))
+def runway(book, n_days):
+    runway_in_days = numpy.floor(metrics.runway(book, n_days=n_days))
 
     return html.Div(className='widget kpi gauge', children=[
         html.Caption(className='label', children=['runway'], style={ 'whiteSpace': 'nowrap' }),

@@ -1,3 +1,6 @@
+import os
+import config
+
 from dash import Dash
 from dash import html
 from dash import dcc
@@ -18,13 +21,13 @@ def app(name, gnucash_file):
         html.Div(style={ 'flex': 1, 'display': 'flex', 'flex-drection': 'column', 'justify-content': 'space-between' },
         children=[
             widgets.net_worth(book),
-            widgets.net_worth_trend(book),
-            widgets.net_worth_prediction(book)
+            widgets.net_worth_trend(book, n_months=os.environ.get('GNUCASH2DASH_NET_WORTH_TREND_N_MONTHS', config.net_worth_trend_n_months)),
+            widgets.net_worth_prediction(book, goal=os.environ.get('GNUCASH2DASH_NET_WORTH_PREDICT_GOAL', config.net_worth_predict_goal))
         ]),
         html.Div(style={ 'flex': 1, 'display': 'flex', 'flex-drection': 'column', 'justify-content': 'space-between' },
         children=[
-            widgets.income_vs_expense(book),
-            widgets.runway(book)
+            widgets.income_vs_expense(book, n_months=os.environ.get('GNUCASH2DASH_INCOME_EXPENSE_N_MONTHS', config.income_expense_n_months)),
+            widgets.runway(book, n_days=os.environ.get('GNUCASH2DASH_RUNWAY_N_DAYS', config.runway_n_days))
         ])
     ])
 
