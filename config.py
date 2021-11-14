@@ -23,7 +23,7 @@ port = '8050'
 # Optional. An iso8601 formatted date string which should be used
 # as default for date calculations for the dashboard. Set to None
 # if you want to use the current system date.
-now = '2026-06-26'  # or None
+now = None  # or '2026-06-26'
 
 #
 # open_browser     (env = GNUCASH2DASH_OPEN_BROWSER)

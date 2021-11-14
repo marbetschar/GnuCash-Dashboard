@@ -23,6 +23,6 @@ def linear_regression_coefficients(y):
 def now():
     env_now = os.environ.get('GNUCASH2DASH_NOW', config.now)
 
-    if not env_now is None:
+    if not env_now is None and not env_now == 'None':
         return datetime.fromisoformat(env_now)
     return datetime.now()
