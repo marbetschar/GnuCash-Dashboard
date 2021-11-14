@@ -35,9 +35,9 @@ net_worth_trend = linear_regression (assets_last_n_months + liabilities_last_n_m
 # Default: n months = 6
 ```
 
-- 🟢 Good: Ascending slope.
+- 🟢 Good: Ascending slope (the steeper the better).
 - 🟠 Medium: Straight slope.
-- 🔴 Bad: Decreasing slope.
+- 🔴 Bad: Decreasing slope (the steeper the worse).
 
 ### Net Worth Prediction
 
