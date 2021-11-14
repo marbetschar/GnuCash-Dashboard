@@ -5,7 +5,7 @@
 ## Table of Contents
 
 - [Metrics](#metrics)
-- [Prerequisistes](#prerequisistes)
+- [Prerequisites](#prerequisites)
 - [Start Dashboard](#start-Dashboard)
 - [Configuration](#configuration)
 - [Unit Testing](#unit-testing)
@@ -71,7 +71,7 @@ runway = assets / average_daily_expense_last_n_days
 - 🟠 Medium: 60 to 90 days.
 - 🔴 Bad: Less than 60 days.
 
-## Prerequisistes
+## Prerequisites
 
 - [GnuCash](https://gnucash.org/)
 - [Python 3](https://www.python.org/)
