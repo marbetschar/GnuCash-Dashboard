@@ -41,7 +41,7 @@ def net_worth_trend(book, n_months):
     if df.values[0][1] < df.values[len(df.values) - 1][1]:
         classification_color = '#0bd44d'  # good
     elif df.values[0][1] > df.values[len(df.values) - 1][1]:
-        classification_color = '#ff1300'  # bad
+        classification_color = '#ff3d00'  # bad
 
     fig.update_traces(line_color=classification_color)
 
@@ -77,7 +77,7 @@ def income_vs_expense(book, n_months):
         'date': '',
         'value': '',
         'variable': ''
-    })
+    }, color_discrete_map={'income':'#0bd44d', 'expenses':'#ff3d00'})
     fig.update_layout(title='income vs expenses')
 
     return dcc.Graph(className='widget', figure=fig)
