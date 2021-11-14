@@ -55,7 +55,7 @@ net_worth_predicted_at_date = extrapolate(net_worth_trend, until=goal)
 
 ### Income vs. Expenses
 
-This should be pretty self explanatory :)
+This should be pretty self explanatory. Defaults to the last 6 months.
 
 ### Runway
 
