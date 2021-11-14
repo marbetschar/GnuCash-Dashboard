@@ -2,6 +2,8 @@
 
 ![Screenshot of the GnuCash Dashboard](Screenshot.png)
 
+## Table of Contents
+
 - [Metrics](#metrics)
 - [Prerequisistes](#prerequisistes)
 - [Start Dashboard](#start-Dashboard)
