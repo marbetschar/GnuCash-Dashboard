@@ -94,14 +94,3 @@ def income_vs_expense(book, n_months=6):
         data.append((income[i][0], abs(income[i][1]), abs(expenses[i][1])))
 
     return pandas.DataFrame(data, columns=['date', 'income', 'expenses'])
-
-# - net_worth_goal_date = extrapolate_linear(net_worth_trend_since_start, until_net_worth=goal)
-#   - as date, small line chart below, huge end-date above
-#   - Trend seit Start der Erfassung
-#   - Forecasting: Datum Zielbetrag basierend auf Extrapolation des Trends
-# - payback_rate = (cur_month_net_income - cur_month_expenses) / (prev_month_liabilities - cur_month_liabilities)
-#   - as percentage: red below 50, yellow below 75, green otherwise
-#   - Wieviel des verfügbaren Gelds habe ich tatsächlich pro Monat in Rückzahlung investiert?
-# - runway = assets / average_daily_expense
-#   - in days: red below 60, yellow below 90, and green otherwise
-#   - if my income stopped right now, how long would I be able to survive?
