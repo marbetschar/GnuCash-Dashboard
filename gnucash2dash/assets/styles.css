@@ -43,6 +43,18 @@ body {
     margin: 0.1em;
 }
 
+.widget.kpi.good h1 {
+    color: #0bd44d;
+}
+
+.widget.kpi.medium h1 {
+    color: #ffc000;
+}
+
+.widget.kpi.bad h1 {
+    color: #ff1300;
+}
+
 .widget.kpi.gauge > div {
     position: relative;
     top: 1em;

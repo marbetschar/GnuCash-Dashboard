@@ -8,6 +8,7 @@ import numpy
 import plotly.express as px
 import plotly.graph_objects as go
 
+from datetime import date
 from gnucash2dash import metrics
 
 def net_worth(book):
@@ -17,7 +18,13 @@ def net_worth(book):
     if currency is None:
         currency = ''
 
-    return html.Div(className='widget kpi', children=[
+    classification = 'medium'
+    if net_worth > 0:
+        classification = 'good'
+    elif net_worth < 0:
+        classification = 'bad'
+
+    return html.Div(className='widget kpi ' + classification, children=[
         html.Caption(className='label', children=['net worth absolute'], style={ 'whiteSpace': 'nowrap' }),
         html.H1(locale.format_string(currency + ' %.0f', net_worth, True))
         ])
@@ -30,22 +37,37 @@ def net_worth_trend(book, n_months):
     })
     fig.update_layout(title='net worth trend')
 
+    classification_color = '#ffc000'  # medium
+    if df.values[0][1] < df.values[len(df.values) - 1][1]:
+        classification_color = '#0bd44d'  # good
+    elif df.values[0][1] > df.values[len(df.values) - 1][1]:
+        classification_color = '#ff1300'  # bad
+
+    fig.update_traces(line_color=classification_color)
+
     return dcc.Graph(className='widget', figure=fig)
 
 def net_worth_prediction(book, goal):
-    date = metrics.predict_date_for_net_worth(book, net_worth=goal)
+    predicted_date = metrics.predict_date_for_net_worth(book, net_worth=goal)
 
-    date_formatted = '∞'
-    if not date is numpy.inf:
-        date_formatted = date.strftime("%b %Y")
+    predicted_date_formatted = '∞'
+    if not predicted_date is numpy.inf:
+        predicted_date_formatted = predicted_date.strftime("%b %Y")
 
     currency = book.get_currency(book.assets)
     if currency is None:
         currency = ''
 
-    return html.Div(className='widget kpi', children=[
+    today_date = date.today()
+    classification = 'medium'
+    if predicted_date is numpy.inf or predicted_date > date(today_date.year + 20, today_date.month, today_date.day):
+        classification = 'bad'
+    elif predicted_date < date(today_date.year + 10, today_date.month, today_date.day):
+        classification = 'good'
+
+    return html.Div(className='widget kpi ' + classification, children=[
         html.Caption(className='label', children=['net worth prediction'], style={ 'whiteSpace': 'nowrap' }),
-        html.H1(date_formatted),
+        html.H1(predicted_date_formatted),
         html.Span(locale.format_string(currency + ' %.0f', goal, True))
         ])
 
